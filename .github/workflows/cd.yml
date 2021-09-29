@@ -33,5 +33,5 @@ jobs:
           username: goopen
           password: ${{ secrets.REGISTRY_SECRET }}
       - run: |
-          docker build . -t goopen.azurecr.io/apiSupplier:prod-${{ github.run_number }}
-          docker push goopen.azurecr.io/apiSupplier:prod-${{ github.run_number }}
+            docker build . -t goopen.azurecr.io/apisupplier:prod-${{ github.run_number }}
+            docker push goopen.azurecr.io/apisupplier:prod-${{ github.run_number }}
