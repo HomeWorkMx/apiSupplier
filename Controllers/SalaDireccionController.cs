@@ -81,6 +81,34 @@ namespace apiSupplier.Controllers
                 throw;
             }
         }
+
+        [HttpPost("SalaDireccionSaveMasive")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaDireccionDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        public async Task<ActionResult<IEnumerable<SalaDireccionDto>>> SalaDireccionSaveMasive(List<SalaDireccionDto> input)
+        {
+            try
+            {
+                if (input == null) return BadRequest(input);
+                List<SalaDireccionDto> salaDirecciones = new List<SalaDireccionDto>();
+                foreach (SalaDireccionDto salaDireccion in input)
+                {
+                    SalaDireccionDto saladireccion = await _clientMsSala.SalaDireccionSaveAsync(salaDireccion);
+
+                    salaDirecciones.Add(saladireccion);
+                }
+                return Ok(salaDirecciones);
+
+   
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         [HttpPost("SalaDireccionInsert")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaDireccionDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
