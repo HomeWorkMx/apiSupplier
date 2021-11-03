@@ -82,6 +82,33 @@ namespace apiSupplier.Controllers
                 throw new Exception (ex.Message);
             }
         }
+
+        [HttpPost("SalaCategoriaSaveMasive")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaCategoriaDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        public async Task<ActionResult<IEnumerable<SalaCategoriaDto>>> SalaCategoriaSaveMasive(List<SalaCategoriaDto> input)
+        {
+            try
+            {
+                if (input == null) return BadRequest(input);
+                List<SalaCategoriaDto> salasCategorias = new List<SalaCategoriaDto>();
+                foreach (SalaCategoriaDto SalaCategoria in input)
+                {
+                    SalaCategoriaDto salaCategoria = await _clientMsSala.SalaCategoriaSaveAsync(SalaCategoria);
+                    salasCategorias.Add(salaCategoria);
+                }
+                return Ok(salasCategorias);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
         [HttpPost("SalaCategoriaInsert")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaCategoriaDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
