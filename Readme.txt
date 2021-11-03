@@ -49,16 +49,16 @@ dotnet openapi add url https://micro-dev.bmlabs.cl/mstransaccion/swagger/v1/swag
 dotnet openapi add url https://micro-dev.bmlabs.cl/msnotificaciones/swagger/v1/swagger.json --output-file openapi/msNotificaciones.json msNotificacionesClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mscalificacion/swagger/v1/swagger.json --output-file openapi/msCalificacion.json msCalificacionClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mssearch/swagger/v1/swagger.json --output-file openapi/msSearch.json msSearchClient.cs
-dotnet openapi add url https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/msTipo.json msTipoClient.cs
+dotnet openapi add url https://micro-prod.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/msTipo.json msTipoClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/msOpenPay/swagger/v1/swagger.json --output-file openapi/msOpenPay.json msOpenPayClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mssearch/swagger/v1/swagger.json --output-file openapi/msSearch.json msSearchClient.cs
 
 
 
-dodotnet openapi add url https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/mstipo.json msTipoClient.cs
+dotnet openapi add url https://micro-prod.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/mstipo.json msTipoClient.cs
 
 	<ItemGroup>
-		<OpenApiReference Include="openapi/msTipo.json" SourceUrl="https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json" />
+		<OpenApiReference Include="openapi/msTipo.json" SourceUrl="https://micro-prod.bmlabs.cl/mstipo/swagger/v1/swagger.json" />
 	</ItemGroup>
 
 
