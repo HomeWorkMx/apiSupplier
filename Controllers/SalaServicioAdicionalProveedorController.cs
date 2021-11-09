@@ -14,67 +14,67 @@ namespace apiSupplier.Controllers
     [TypeFilter(typeof(InterceptorLogAttribute))]
     [ApiController]
     [Route("/api/v1/[controller]")]
-    public class SalaServicioAdicionalController : Controller
+    public class SalaServicioAdicionalProveedorController : Controller
     {
         private msSalaClient _clientMsSala;
         private readonly IMemoryCache _memoryCache;
-        public SalaServicioAdicionalController(msSalaClient clientMsSala, IMemoryCache memoryCache)
+        public SalaServicioAdicionalProveedorController(msSalaClient clientMsSala, IMemoryCache memoryCache)
         {
             _clientMsSala = clientMsSala;
             _memoryCache = memoryCache;
         }
-        [HttpGet("SalaServicioAdicionalGetAll")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [HttpGet("SalaServicioAdicionalProveedorGetAll")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalGetAll()
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalProveedorDto>>> SalaServicioAdicionalProveedorGetAll()
         {
             //var entidades = await _clientMsSala.SalaGetAllAsync();
             var entidades = await
-               _memoryCache.GetOrCreateAsync("SalaServicioAdicionalGetAllAsync", entry =>
+               _memoryCache.GetOrCreateAsync("SalaServicioAdicionalProveedorGetAllAsync", entry =>
                {
                    entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                    entry.Priority = CacheItemPriority.Normal;
-                   return _clientMsSala.SalaServicioAdicionalGetAllAsync(); 
+                   return _clientMsSala.SalaServicioAdicionalProveedorGetAllAsync(); 
                });
             if (entidades == null) return NotFound();
             return Ok(entidades);
         }
 
-        [HttpGet("SalaServicioAdicionalGet/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [HttpGet("SalaServicioAdicionalProveedorGet/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalGet(int id)
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalProveedorDto>>> SalaServicioAdicionalProveedorGet(int id)
         {
             if (id <= 0) return BadRequest(ModelState);
-            //var entidad = await _clientMsSalaServicioAdicional.SalaServicioAdicionalGetAsync(id);
+            //var entidad = await _clientMsSalaServicioAdicionalProveedor.SalaServicioAdicionalProveedorGetAsync(id);
             var entidad = await
-             _memoryCache.GetOrCreateAsync("SalaServicioAdicionalGetAsync"+id.ToString(), entry =>
+             _memoryCache.GetOrCreateAsync("SalaServicioAdicionalProveedorGetAsync"+id.ToString(), entry =>
              {
                  entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                  entry.Priority = CacheItemPriority.Normal;
-                 return _clientMsSala.SalaServicioAdicionalGetByIdAsync(id);
+                 return _clientMsSala.SalaServicioAdicionalProveedorGetAsync(id);
              });
 
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
 
-        [HttpPost("SalaServicioAdicionalSave")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [HttpPost("SalaServicioAdicionalProveedorSave")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalSave(SalaServicioAdicionalDto input)
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalProveedorDto>>> SalaServicioAdicionalProveedorSave(SalaServicioAdicionalProveedorDto input)
         {
             try
             {
 
                 if (input == null) return BadRequest(input);
-                var entidad = await _clientMsSala.SalaServicioAdicionalSaveAsync(input);
+                var entidad = await _clientMsSala.SalaServicioAdicionalProveedorSaveAsync(input);
                 if (entidad == null) return NotFound();
                 return Ok(entidad);
             }
@@ -84,20 +84,20 @@ namespace apiSupplier.Controllers
             }
         }
 
-        [HttpPost("SalaServicioAdicionalSaveMasive")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [HttpPost("SalaServicioAdicionalProveedorSaveMasive")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalSaveMasive(List<SalaServicioAdicionalDto> input)
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalProveedorDto>>> SalaServicioAdicionalProveedorSaveMasive(List<SalaServicioAdicionalProveedorDto> input)
         {
             try
             {
                 if (input == null) return BadRequest(input);
-                List<SalaServicioAdicionalDto> serviciosAdicionales = new List<SalaServicioAdicionalDto>();
-                foreach (SalaServicioAdicionalDto SalaServicioAdicional in input)
+                List<SalaServicioAdicionalProveedorDto> serviciosAdicionales = new List<SalaServicioAdicionalProveedorDto>();
+                foreach (SalaServicioAdicionalProveedorDto SalaServicioAdicionalProveedor in input)
                 {
-                    SalaServicioAdicionalDto servicioAdicional = await _clientMsSala.SalaServicioAdicionalSaveAsync(SalaServicioAdicional);
+                    SalaServicioAdicionalProveedorDto servicioAdicional = await _clientMsSala.SalaServicioAdicionalProveedorSaveAsync(SalaServicioAdicionalProveedor);
                     serviciosAdicionales.Add(servicioAdicional);
                 }
                 return Ok(serviciosAdicionales);
@@ -110,27 +110,27 @@ namespace apiSupplier.Controllers
             }
         }
 
-        [HttpPost("SalaServicioAdicionalInsert")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [HttpPost("SalaServicioAdicionalProveedorInsert")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalInsert(SalaServicioAdicionalDto input)
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalProveedorDto>>> SalaServicioAdicionalProveedorInsert(SalaServicioAdicionalProveedorDto input)
         {
             if (input == null) return BadRequest(input);
-            var entidad = await _clientMsSala.SalaServicioAdicionalInsertAsync(input);
+            var entidad = await _clientMsSala.SalaServicioAdicionalProveedorInsertAsync(input);
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
-        [HttpPut("SalaServicioAdicionalUpdate")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [HttpPut("SalaServicioAdicionalProveedorUpdate")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalUpdate(SalaServicioAdicionalDto input)
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalProveedorDto>>> SalaServicioAdicionalProveedorUpdate(SalaServicioAdicionalProveedorDto input)
         {
             if (input == null) return BadRequest(input);
-            var entidad = await _clientMsSala.SalaServicioAdicionalUpdateAsync(input);
+            var entidad = await _clientMsSala.SalaServicioAdicionalProveedorUpdateAsync(input);
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
