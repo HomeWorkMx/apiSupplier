@@ -72,6 +72,7 @@ namespace apiSupplier.Controllers
         {
             try
             {
+
                 if (input == null) return BadRequest(input);
                 var entidad = await _clientMsSala.SalaServicioAdicionalSaveAsync(input);
                 if (entidad == null) return NotFound();
@@ -82,6 +83,33 @@ namespace apiSupplier.Controllers
                 throw new Exception (ex.Message);
             }
         }
+
+        [HttpPost("SalaServicioAdicionalSaveMasive")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalSaveMasive(List<SalaServicioAdicionalDto> input)
+        {
+            try
+            {
+                if (input == null) return BadRequest(input);
+                List<SalaServicioAdicionalDto> serviciosAdicionales = new List<SalaServicioAdicionalDto>();
+                foreach (SalaServicioAdicionalDto SalaServicioAdicional in input)
+                {
+                    SalaServicioAdicionalDto servicioAdicional = await _clientMsSala.SalaServicioAdicionalSaveAsync(SalaServicioAdicional);
+                    serviciosAdicionales.Add(servicioAdicional);
+                }
+                return Ok(serviciosAdicionales);
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         [HttpPost("SalaServicioAdicionalInsert")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
