@@ -63,6 +63,24 @@ namespace apiSupplier.Controllers
             return Ok(entidad);
         }
 
+        [HttpGet("SalaServicioAdicionalGetAllDistinct")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalGetAllDistinct()
+        {
+            var entidades = await
+               _memoryCache.GetOrCreateAsync("SalaServicioAdicionalGetAllDistinct", entry =>
+               {
+                   entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
+                   entry.Priority = CacheItemPriority.Normal;
+                   return _clientMsSala.SalaServicioAdicionalGetAllDistinctAsync();
+               });
+            if (entidades == null) return NotFound();
+            return Ok(entidades);
+        }
+
         [HttpPost("SalaServicioAdicionalSave")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
