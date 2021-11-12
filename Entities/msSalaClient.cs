@@ -28,6 +28,7 @@ namespace apiSupplier.Entities
                 UpdateJsonSerializerSettings(settings);
                 return settings;
             });
+            BaseUrl = httpClient?.BaseAddress?.ToString();
         }
     
         public string BaseUrl 
@@ -3671,18 +3672,23 @@ namespace apiSupplier.Entities
     
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalDto>> SalaServicioAdicionalGetAllDistinctAsync()
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalDto>> SalaServicioAdicionalGetAllDistinctAsync(int? idProveedor)
         {
-            return SalaServicioAdicionalGetAllDistinctAsync(System.Threading.CancellationToken.None);
+            return SalaServicioAdicionalGetAllDistinctAsync(idProveedor, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalDto>> SalaServicioAdicionalGetAllDistinctAsync(System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalDto>> SalaServicioAdicionalGetAllDistinctAsync(int? idProveedor, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/SalaServicioAdicional/SalaServicioAdicionalGetAllDistinct");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/SalaServicioAdicional/SalaServicioAdicionalGetAllDistinct?");
+            if (idProveedor != null) 
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("idProveedor") + "=").Append(System.Uri.EscapeDataString(ConvertToString(idProveedor, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
     
             var client_ = _httpClient;
             try
@@ -7570,8 +7576,7 @@ namespace apiSupplier.Entities
             return System.Convert.ToString(value, cultureInfo);
         }
     }
-
-    
+        
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaTerminosContratoDto 
     {
@@ -7592,7 +7597,6 @@ namespace apiSupplier.Entities
     
     
     }
-    
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaCategoriaDto 
@@ -7789,6 +7793,9 @@ namespace apiSupplier.Entities
         [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdUsuario { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdSala { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BorradoLogico { get; set; }
     
@@ -7965,7 +7972,7 @@ namespace apiSupplier.Entities
     
     
     }
-    
+        
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaDireccionDto 
     {

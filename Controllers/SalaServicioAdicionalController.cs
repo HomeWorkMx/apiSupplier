@@ -68,14 +68,14 @@ namespace apiSupplier.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalGetAllDistinct()
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalDto>>> SalaServicioAdicionalGetAllDistinct(int idProveedor)
         {
             var entidades = await
                _memoryCache.GetOrCreateAsync("SalaServicioAdicionalGetAllDistinct", entry =>
                {
                    entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                    entry.Priority = CacheItemPriority.Normal;
-                   return _clientMsSala.SalaServicioAdicionalGetAllDistinctAsync();
+                   return _clientMsSala.SalaServicioAdicionalGetAllDistinctAsync(idProveedor);
                });
             if (entidades == null) return NotFound();
             return Ok(entidades);

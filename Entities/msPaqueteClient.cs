@@ -28,6 +28,7 @@ namespace apiSupplier.Entities
                 UpdateJsonSerializerSettings(settings);
                 return settings;
             });
+            BaseUrl = httpClient?.BaseAddress?.ToString();
         }
     
         public string BaseUrl 
