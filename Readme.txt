@@ -42,7 +42,7 @@ dotnet build
 
 dotnet openapi add url https://micro-dev.bmlabs.cl/msproducto/swagger/v1/swagger.json --output-file openapi/msProducto.json msProductoClient.cs
 dotnet openapi add url https://micro-prod.bmlabs.cl/mssala/swagger/v1/swagger.json --output-file openapi/msSala.json msSalaClient.cs
-dotnet openapi add url https://micro-dev.bmlabs.cl/msmembresia/swagger/v1/swagger.json --output-file openapi/msMembresia.json msMembresiaClient.cs
+dotnet openapi add url https://micro-prod.bmlabs.cl/msmembresia/swagger/v1/swagger.json --output-file openapi/msMembresia.json msMembresiaClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/mstipo.json msTipoClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mspaquete/swagger/v1/swagger.json --output-file openapi/msPaquete.json msPaqueteClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mstransaccion/swagger/v1/swagger.json --output-file openapi/msTransaccion.json msTransaccionClient.cs
@@ -94,7 +94,7 @@ dotnet openapi add url https://micro-prod.bmlabs.cl/mstipo/swagger/v1/swagger.js
 		<OpenApiReference Include="openapi/msSala.json" SourceUrl="https://micro-prod.bmlabs.cl/mssala/swagger/v1/swagger.json" />
 	</ItemGroup>
 	<ItemGroup>
-		<OpenApiReference Include="openapi/msMembresia.json" SourceUrl="https://micro-dev.bmlabs.cl/msmembresia/swagger/v1/swagger.json" />
+		<OpenApiReference Include="openapi/msMembresia.json" SourceUrl="https://micro-prod.bmlabs.cl/msmembresia/swagger/v1/swagger.json" />
 	</ItemGroup>
 		<ItemGroup>
 		<OpenApiReference Include="openapi/msTipo.json" SourceUrl="https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json" />

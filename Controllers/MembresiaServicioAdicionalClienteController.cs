@@ -80,6 +80,27 @@ namespace apiSupplier.Controllers
             if (entidades == null) return NotFound();
             return Ok(entidades);
         }
+
+        [HttpGet("MembresiaServicioAdicionalClienteGetByIdClienteAndTransaccion")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalClienteDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        public async Task<ActionResult<IEnumerable<MembresiaServicioAdicionalClienteDto>>> MembresiaServicioAdicionalClienteGetByIdClienteAndTransaccion(int idCliente, int idTransaccion)
+        {
+            var entidades = await _clientMsMembresia.MembresiaServicioAdicionalClienteGetByIdClienteAndTransaccionAsync(idCliente, idTransaccion);
+            /*var entidades = await
+               _memoryCache.GetOrCreateAsync("MembresiaServicioAdicionalClienteGetByIdClienteAsync" + idCliente.ToString(), entry =>
+               {
+                   entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
+                   entry.Priority = CacheItemPriority.Normal;
+                   return _clientMsMembresia.MembresiaServicioAdicionalClienteGetByIdClienteAsync(idCliente);
+               });*/
+            if (entidades == null) return NotFound();
+            return Ok(entidades);
+        }
+
+
         [HttpPost("MembresiaServicioAdicionalClienteSave")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalClienteDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
