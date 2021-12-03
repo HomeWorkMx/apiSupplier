@@ -7525,6 +7525,7 @@ namespace apiSupplier.Entities
             return System.Convert.ToString(value, cultureInfo);
         }
     }
+
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class MembresiaTerminosContratoDto 
@@ -7547,6 +7548,8 @@ namespace apiSupplier.Entities
     
     }
     
+
+    
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class MembresiaAsignacionDto 
     {
@@ -7564,7 +7567,8 @@ namespace apiSupplier.Entities
     
     
     }
-
+    
+    
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class MembresiaCategoriaDto 
     {
@@ -7585,7 +7589,7 @@ namespace apiSupplier.Entities
     
     
     }
-        
+    
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class MembresiaFrecuenciaCobroDto 
     {
@@ -7644,6 +7648,33 @@ namespace apiSupplier.Entities
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    public partial class MembresiaServicioAdicionalDto2 
+    {
+        [Newtonsoft.Json.JsonProperty("idMembresiaServicioAdicional", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdMembresiaServicioAdicional { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("idMembresia", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdMembresia { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("nombreServicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string NombreServicio { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Descripcion { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("imagen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Imagen { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("precio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Precio { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BorradoLogico { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class MembresiaServicioAdicionalClienteDto 
     {
         [Newtonsoft.Json.JsonProperty("idMembresiaServicioAdicionalCliente", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -7665,7 +7696,7 @@ namespace apiSupplier.Entities
         public int? BorradoLogico { get; set; }
     
         [Newtonsoft.Json.JsonProperty("idMembresiaServicioAdicionalNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public MembresiaServicioAdicionalDto IdMembresiaServicioAdicionalNavigation { get; set; }
+        public MembresiaServicioAdicionalDto2 IdMembresiaServicioAdicionalNavigation { get; set; }
     
     
     }
@@ -7774,7 +7805,7 @@ namespace apiSupplier.Entities
     
     
     }
-    
+        
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class DireccionDto 
     {

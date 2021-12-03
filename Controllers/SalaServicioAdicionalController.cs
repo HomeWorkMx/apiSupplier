@@ -81,6 +81,20 @@ namespace apiSupplier.Controllers
             return Ok(entidades);
         }
 
+        [HttpGet("SalaServicioAdicionalClienteGetByIdClienteAndTransaccion")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalClienteDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        public async Task<ActionResult<IEnumerable<SalaServicioAdicionalClienteDto>>> SalaServicioAdicionalClienteGetByIdClienteAndTransaccion(int idCliente, int idTransaccion)
+        {
+            var entidades = await _clientMsSala.SalaServicioAdicionalClienteGetByIdClienteAndTransaccionAsync(idCliente, idTransaccion);
+
+            if (entidades == null) return NotFound();
+            return Ok(entidades);
+        }
+
+
         [HttpPost("SalaServicioAdicionalSave")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaServicioAdicionalDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]

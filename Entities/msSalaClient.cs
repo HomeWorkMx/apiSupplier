@@ -28,7 +28,6 @@ namespace apiSupplier.Entities
                 UpdateJsonSerializerSettings(settings);
                 return settings;
             });
-            BaseUrl = httpClient?.BaseAddress?.ToString();
         }
     
         public string BaseUrl 
@@ -3756,6 +3755,94 @@ namespace apiSupplier.Entities
     
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>> SalaServicioAdicionalClienteGetByIdClienteAndTransaccionAllAsync(int? idCliente, int? idTransaccion)
+        {
+            return SalaServicioAdicionalClienteGetByIdClienteAndTransaccionAllAsync(idCliente, idTransaccion, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>> SalaServicioAdicionalClienteGetByIdClienteAndTransaccionAllAsync(int? idCliente, int? idTransaccion, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/SalaServicioAdicional/SalaServicioAdicionalClienteGetByIdClienteAndTransaccion?");
+            if (idCliente != null) 
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("idCliente") + "=").Append(System.Uri.EscapeDataString(ConvertToString(idCliente, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (idTransaccion != null) 
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("idTransaccion") + "=").Append(System.Uri.EscapeDataString(ConvertToString(idTransaccion, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == "404") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<NotFoundResult>(response_, headers_).ConfigureAwait(false);
+                            throw new ApiException<NotFoundResult>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == "500") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_).ConfigureAwait(false);
+                            throw new ApiException<ProblemDetails>("Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+            
+                        return default(System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<SalaServicioAdicionalDto> SalaServicioAdicionalGetByIdAsync(int idSalaServicioAdicional)
         {
             return SalaServicioAdicionalGetByIdAsync(idSalaServicioAdicional, System.Threading.CancellationToken.None);
@@ -4443,6 +4530,94 @@ namespace apiSupplier.Entities
             if (idCliente != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("idCliente") + "=").Append(System.Uri.EscapeDataString(ConvertToString(idCliente, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == "404") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<NotFoundResult>(response_, headers_).ConfigureAwait(false);
+                            throw new ApiException<NotFoundResult>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == "500") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_).ConfigureAwait(false);
+                            throw new ApiException<ProblemDetails>("Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+            
+                        return default(System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>> SalaServicioAdicionalClienteGetByIdClienteAndTransaccionAsync(int? idCliente, int? idTransaccion)
+        {
+            return SalaServicioAdicionalClienteGetByIdClienteAndTransaccionAsync(idCliente, idTransaccion, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SalaServicioAdicionalClienteDto>> SalaServicioAdicionalClienteGetByIdClienteAndTransaccionAsync(int? idCliente, int? idTransaccion, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/SalaServicioAdicionalCliente/SalaServicioAdicionalClienteGetByIdClienteAndTransaccion?");
+            if (idCliente != null) 
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("idCliente") + "=").Append(System.Uri.EscapeDataString(ConvertToString(idCliente, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (idTransaccion != null) 
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("idTransaccion") + "=").Append(System.Uri.EscapeDataString(ConvertToString(idTransaccion, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
     
@@ -7687,7 +7862,7 @@ namespace apiSupplier.Entities
     
     
     }
-    
+        
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class UsuarioDto 
     {
@@ -7874,6 +8049,9 @@ namespace apiSupplier.Entities
         [Newtonsoft.Json.JsonProperty("idTransaccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdTransaccion { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("idSalaDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdSalaDireccion { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("fechaHoraInicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string FechaHoraInicio { get; set; }
     
@@ -7882,6 +8060,27 @@ namespace apiSupplier.Entities
     
         [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BorradoLogico { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    public partial class SalaDireccionDto 
+    {
+        [Newtonsoft.Json.JsonProperty("idSalaDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdSalaDireccion { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdSala { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("idDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? IdDireccion { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BorradoLogico { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("idDireccionNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public DireccionDto IdDireccionNavigation { get; set; }
     
     
     }
@@ -7970,27 +8169,42 @@ namespace apiSupplier.Entities
         [Newtonsoft.Json.JsonProperty("salaUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<SalaUsuarioDto> SalaUsuario { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("salaDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<SalaDireccionDto> SalaDireccion { get; set; }
+    
     
     }
-        
+    
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class SalaDireccionDto 
+    public partial class ProblemDetails 
     {
-        [Newtonsoft.Json.JsonProperty("idSalaDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSalaDireccion { get; set; }
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Type { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSala { get; set; }
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Title { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? IdDireccion { get; set; }
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Status { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? BorradoLogico { get; set; }
+        [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Detail { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("instance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Instance { get; set; }
+    
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+    
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
     
     
     }
-
+    
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.5.0 (NJsonSchema v10.0.22.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class ApiException : System.Exception
     {
