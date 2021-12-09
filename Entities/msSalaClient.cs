@@ -7933,6 +7933,33 @@ namespace apiSupplier.Entities
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    public partial class SalaServicioAdicionalDto2 
+    {
+        [Newtonsoft.Json.JsonProperty("idSalaServicioAdicional", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdSalaServicioAdicional { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdSala { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("nombreServicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string NombreServicio { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("precio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Precio { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Descripcion { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("imagen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Imagen { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BorradoLogico { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaServicioAdicionalClienteDto 
     {
         [Newtonsoft.Json.JsonProperty("idSalaServicioAdicionalCliente", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -7952,6 +7979,9 @@ namespace apiSupplier.Entities
     
         [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BorradoLogico { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("idSalaServicioAdicionalNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SalaServicioAdicionalDto2 IdSalaServicioAdicionalNavigation { get; set; }
     
     
     }
@@ -8064,6 +8094,7 @@ namespace apiSupplier.Entities
     
     }
     
+    
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaDireccionDto 
     {
@@ -8174,7 +8205,7 @@ namespace apiSupplier.Entities
     
     
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ProblemDetails 
     {
@@ -8205,6 +8236,7 @@ namespace apiSupplier.Entities
     
     }
     
+
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.5.0 (NJsonSchema v10.0.22.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class ApiException : System.Exception
     {
