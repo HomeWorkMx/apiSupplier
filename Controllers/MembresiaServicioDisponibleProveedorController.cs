@@ -14,88 +14,88 @@ namespace apiSupplier.Controllers
     [TypeFilter(typeof(InterceptorLogAttribute))]
     [ApiController]
     [Route("/api/v1/[controller]")]
-    public class MembresiaServicioAdicionalProveedorController : Controller
+    public class MembresiaServicioDisponibleProveedorController : Controller
     {
         private msMembresiaClient _clientMsMembresia;
         private readonly IMemoryCache _memoryCache;
-        public MembresiaServicioAdicionalProveedorController(msMembresiaClient clientMsMembresia, IMemoryCache memoryCache)
+        public MembresiaServicioDisponibleProveedorController(msMembresiaClient clientMsMembresia, IMemoryCache memoryCache)
         {
             _clientMsMembresia = clientMsMembresia;
             _memoryCache = memoryCache;
         }
 
-        [HttpGet("MembresiaServicioAdicionalProveedorGetAll")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalProveedorDto>))]
+        [HttpGet("MembresiaServicioDisponibleProveedorGetAll")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioDisponibleProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<MembresiaServicioAdicionalProveedorDto>>> MembresiaServicioAdicionalProveedorGetAll()
+        public async Task<ActionResult<IEnumerable<MembresiaServicioDisponibleProveedorDto>>> MembresiaServicioDisponibleProveedorGetAll()
         {
-            //var entidades = await _clientMsMembresia.MembresiaServicioAdicionalProveedorGetAllAsync();
+            //var entidades = await _clientMsMembresia.MembresiaServicioDisponibleProveedorGetAllAsync();
             var entidades = await
-               _memoryCache.GetOrCreateAsync("MembresiaServicioAdicionalProveedorGetAllAsync", entry =>
+               _memoryCache.GetOrCreateAsync("MembresiaServicioDisponibleProveedorGetAllAsync", entry =>
                {
                    entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                    entry.Priority = CacheItemPriority.Normal;
-                   return _clientMsMembresia.MembresiaServicioAdicionalProveedorGetAllAsync();
+                   return _clientMsMembresia.MembresiaServicioDisponibleProveedorGetAllAsync();
                });
 
             if (entidades == null) return NotFound();
             return Ok(entidades);
         }
 
-        [HttpGet("MembresiaServicioAdicionalProveedorGet/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalProveedorDto>))]
+        [HttpGet("MembresiaServicioDisponibleProveedorGet/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioDisponibleProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<MembresiaServicioAdicionalProveedorDto>>> MembresiaServicioAdicionalProveedorGet(int id)
+        public async Task<ActionResult<IEnumerable<MembresiaServicioDisponibleProveedorDto>>> MembresiaServicioDisponibleProveedorGet(int id)
         {
             if (id <= 0) return BadRequest(ModelState);
-            //var entidad = await _clientMsMembresia.MembresiaServicioAdicionalProveedorGetAsync(id);
+            //var entidad = await _clientMsMembresia.MembresiaServicioDisponibleProveedorGetAsync(id);
             var entidad = await
-              _memoryCache.GetOrCreateAsync("MembresiaServicioAdicionalProveedorGetAsync" + id.ToString(), entry =>
+              _memoryCache.GetOrCreateAsync("MembresiaServicioDisponibleProveedorGetAsync" + id.ToString(), entry =>
               {
                   entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                   entry.Priority = CacheItemPriority.Normal;
-                  return _clientMsMembresia.MembresiaServicioAdicionalProveedorGetAsync(id);
+                  return _clientMsMembresia.MembresiaServicioDisponibleProveedorGetAsync(id);
               });
 
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
 
-        [HttpGet("MembresiaServicioAdicionalProveedorGetByIdProveedor")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalProveedorDto>))]
+        [HttpGet("MembresiaServicioDisponibleProveedorGetByIdProveedor")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioDisponibleProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<MembresiaServicioAdicionalProveedorDto>>> MembresiaServicioAdicionalProveedorGetByIdProveedor(int idProveedor)
+        public async Task<ActionResult<IEnumerable<MembresiaServicioDisponibleProveedorDto>>> MembresiaServicioDisponibleProveedorGetByIdProveedor(int idProveedor)
         {
-            var entidades = await _clientMsMembresia.MembresiaServicioAdicionalProveedorGetByIdProveedorAsync(idProveedor);
+            var entidades = await _clientMsMembresia.MembresiaServicioDisponibleProveedorGetByIdProveedorAsync(idProveedor);
             /*var entidades = await
-                _memoryCache.GetOrCreateAsync("MembresiaServicioAdicionalProveedorGetByIdProveedorAsync" + idProveedor.ToString(), entry =>
+                _memoryCache.GetOrCreateAsync("MembresiaServicioDisponibleProveedorGetByIdProveedorAsync" + idProveedor.ToString(), entry =>
                 {
                     entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                     entry.Priority = CacheItemPriority.Normal;
-                    return _clientMsMembresia.MembresiaServicioAdicionalProveedorGetByIdProveedorAsync(idProveedor);
+                    return _clientMsMembresia.MembresiaServicioDisponibleProveedorGetByIdProveedorAsync(idProveedor);
                 });*/
 
             if (entidades == null) return NotFound();
             return Ok(entidades);
         }
 
-        [HttpPost("MembresiaServicioAdicionalProveedorSave")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalProveedorDto>))]
+        [HttpPost("MembresiaServicioDisponibleProveedorSave")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioDisponibleProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<MembresiaServicioAdicionalProveedorDto>>> MembresiaServicioAdicionalProveedor(MembresiaServicioAdicionalProveedorDto input)
+        public async Task<ActionResult<IEnumerable<MembresiaServicioDisponibleProveedorDto>>> MembresiaServicioDisponibleProveedor(MembresiaServicioDisponibleProveedorDto input)
         {
             try
             {
                 if (input == null) return BadRequest(input);
-                var entidad = await _clientMsMembresia.MembresiaServicioAdicionalProveedorSaveAsync(input);
+                var entidad = await _clientMsMembresia.MembresiaServicioDisponibleProveedorSaveAsync(input);
                 if (entidad == null) return NotFound();
                 return Ok(entidad);
             }
@@ -105,39 +105,39 @@ namespace apiSupplier.Controllers
                 throw;
             }
         }
-        [HttpPost("MembresiaServicioAdicionalProveedorInsert")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalProveedorDto>))]
+        [HttpPost("MembresiaServicioDisponibleProveedorInsert")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioDisponibleProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<MembresiaServicioAdicionalProveedorDto>>> MembresiaServicioAdicionalProveedorInsert(MembresiaServicioAdicionalProveedorDto input)
+        public async Task<ActionResult<IEnumerable<MembresiaServicioDisponibleProveedorDto>>> MembresiaServicioDisponibleProveedorInsert(MembresiaServicioDisponibleProveedorDto input)
         {
             if (input == null) return BadRequest(input);
-            var entidad = await _clientMsMembresia.MembresiaServicioAdicionalProveedorInsertAsync(input);
+            var entidad = await _clientMsMembresia.MembresiaServicioDisponibleProveedorInsertAsync(input);
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
-        [HttpPut("MembresiaServicioAdicionalProveedorUpdate")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioAdicionalProveedorDto>))]
+        [HttpPut("MembresiaServicioDisponibleProveedorUpdate")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MembresiaServicioDisponibleProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<MembresiaServicioAdicionalProveedorDto>>> MembresiaServicioAdicionalProveedorUpdate(MembresiaServicioAdicionalProveedorDto input)
+        public async Task<ActionResult<IEnumerable<MembresiaServicioDisponibleProveedorDto>>> MembresiaServicioDisponibleProveedorUpdate(MembresiaServicioDisponibleProveedorDto input)
         {
             if (input == null) return BadRequest(input);
-            var entidad = await _clientMsMembresia.MembresiaServicioAdicionalProveedorUpdateAsync(input);
+            var entidad = await _clientMsMembresia.MembresiaServicioDisponibleProveedorUpdateAsync(input);
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
-        [HttpDelete("MembresiaServicioAdicionalProveedorDelete")]
+        [HttpDelete("MembresiaServicioDisponibleProveedorDelete")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult> MembresiaServicioAdicionalProveedorDelete(int id)
+        public async Task<ActionResult> MembresiaServicioDisponibleProveedorDelete(int id)
         {
             if (id <= 0) return BadRequest(ModelState);
-            await _clientMsMembresia.MembresiaServicioAdicionalProveedorDeleteAsync(id);
+            await _clientMsMembresia.MembresiaServicioDisponibleProveedorDeleteAsync(id);
             return NoContent();
            
         }

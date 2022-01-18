@@ -41,24 +41,24 @@ dotnet build
 
 
 dotnet openapi add url https://micro-dev.bmlabs.cl/msproducto/swagger/v1/swagger.json --output-file openapi/msProducto.json msProductoClient.cs
-dotnet openapi add url https://micro-dev.bmlabs.cl/mssala/swagger/v1/swagger.json --output-file openapi/msSala.json msSalaClient.cs
-dotnet openapi add url https://micro-dev.bmlabs.cl/msmembresia/swagger/v1/swagger.json --output-file openapi/msMembresia.json msMembresiaClient.cs
+dotnet openapi add url https://micro-prod.bmlabs.cl/mssala/swagger/v1/swagger.json --output-file openapi/msSala.json msSalaClient.cs
+dotnet openapi add url https://micro-prod.bmlabs.cl/msmembresia/swagger/v1/swagger.json --output-file openapi/msMembresia.json msMembresiaClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/mstipo.json msTipoClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mspaquete/swagger/v1/swagger.json --output-file openapi/msPaquete.json msPaqueteClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mstransaccion/swagger/v1/swagger.json --output-file openapi/msTransaccion.json msTransaccionClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/msnotificaciones/swagger/v1/swagger.json --output-file openapi/msNotificaciones.json msNotificacionesClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mscalificacion/swagger/v1/swagger.json --output-file openapi/msCalificacion.json msCalificacionClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mssearch/swagger/v1/swagger.json --output-file openapi/msSearch.json msSearchClient.cs
-dotnet openapi add url https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/msTipo.json msTipoClient.cs
+dotnet openapi add url https://micro-prod.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/msTipo.json msTipoClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/msOpenPay/swagger/v1/swagger.json --output-file openapi/msOpenPay.json msOpenPayClient.cs
 dotnet openapi add url https://micro-dev.bmlabs.cl/mssearch/swagger/v1/swagger.json --output-file openapi/msSearch.json msSearchClient.cs
 
 
 
-dodotnet openapi add url https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/mstipo.json msTipoClient.cs
+dotnet openapi add url https://micro-prod.bmlabs.cl/mstipo/swagger/v1/swagger.json --output-file openapi/mstipo.json msTipoClient.cs
 
 	<ItemGroup>
-		<OpenApiReference Include="openapi/msTipo.json" SourceUrl="https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json" />
+		<OpenApiReference Include="openapi/msTipo.json" SourceUrl="https://micro-prod.bmlabs.cl/mstipo/swagger/v1/swagger.json" />
 	</ItemGroup>
 
 
@@ -90,12 +90,8 @@ dodotnet openapi add url https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.j
 
 
 
-		<ItemGroup>
-		<OpenApiReference Include="openapi/msSala.json" SourceUrl="https://micro-dev.bmlabs.cl/mssala/swagger/v1/swagger.json" />
-	</ItemGroup>
-	<ItemGroup>
-		<OpenApiReference Include="openapi/msMembresia.json" SourceUrl="https://micro-dev.bmlabs.cl/msmembresia/swagger/v1/swagger.json" />
-	</ItemGroup>
+
+
 		<ItemGroup>
 		<OpenApiReference Include="openapi/msTipo.json" SourceUrl="https://micro-dev.bmlabs.cl/mstipo/swagger/v1/swagger.json" />
 	</ItemGroup>
@@ -114,4 +110,20 @@ dotnet openapi add url https://micro-dev.bmlabs.cl/mstransaccion/swagger/v1/swag
 		<OpenApiReference Include="openapi/msTransaccion.json" SourceUrl="https://micro-dev.bmlabs.cl/mstransaccion/swagger/v1/swagger.json" />
 	</ItemGroup>
 
-dotnet build
+
+
+	
+	<ItemGroup>
+		<OpenApiReference Include="openapi/msSala.json" SourceUrl="https://micro-prod.bmlabs.cl/mssala/swagger/v1/swagger.json" />
+	</ItemGroup>
+
+	dotnet openapi add url https://micro-prod.bmlabs.cl/mssala/swagger/v1/swagger.json --output-file openapi/msSala.json msSalaClient.cs
+
+
+
+	<ItemGroup>
+		<OpenApiReference Include="openapi/msMembresia.json" SourceUrl="https://micro-prod.bmlabs.cl/msmembresia/swagger/v1/swagger.json" />
+	</ItemGroup>
+
+	dotnet openapi add url https://micro-prod.bmlabs.cl/msmembresia/swagger/v1/swagger.json --output-file openapi/msMembresia.json msMembresiaClient.cs
+

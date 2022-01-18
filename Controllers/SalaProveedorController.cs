@@ -14,66 +14,66 @@ namespace apiSupplier.Controllers
     [TypeFilter(typeof(InterceptorLogAttribute))]
     [ApiController]
     [Route("/api/v1/[controller]")]
-    public class SalaController : Controller
+    public class SalaProveedorController : Controller
     {
         private msSalaClient _clientMsSala;
         private readonly IMemoryCache _memoryCache;
-        public SalaController(msSalaClient clientMsSala, IMemoryCache memoryCache)
+        public SalaProveedorController(msSalaClient clientMsSala, IMemoryCache memoryCache)
         {
             _clientMsSala = clientMsSala;
             _memoryCache = memoryCache;
         }
-        [HttpGet("SalaGetAll")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaDto>))]
+        [HttpGet("SalaProveedorGetAll")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaDto>>> SalaGetAll()
+        public async Task<ActionResult<IEnumerable<SalaProveedorDto>>> SalaProveedorGetAll()
         {
             //var entidades = await _clientMsSala.SalaGetAllAsync();
             var entidades = await
-               _memoryCache.GetOrCreateAsync("SalaGetAllAsync", entry =>
+               _memoryCache.GetOrCreateAsync("SalaProveedorGetAllAsync", entry =>
                {
                    entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                    entry.Priority = CacheItemPriority.Normal;
-                   return _clientMsSala.SalaGetAllAsync(); 
+                   return _clientMsSala.SalaProveedorGetAllAsync(); 
                });
             if (entidades == null) return NotFound();
             return Ok(entidades);
         }
 
-        [HttpGet("SalaGet/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaDto>))]
+        [HttpGet("SalaProveedorGet/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaDto>>> SalaGet(int id)
+        public async Task<ActionResult<IEnumerable<SalaProveedorDto>>> SalaProveedorGet(int id)
         {
             if (id <= 0) return BadRequest(ModelState);
-            //var entidad = await _clientMsSala.SalaGetAsync(id);
+            //var entidad = await _clientMsSalaProveedor.SalaProveedorGetAsync(id);
             var entidad = await
-             _memoryCache.GetOrCreateAsync("SalaGetAsync"+id.ToString(), entry =>
+             _memoryCache.GetOrCreateAsync("SalaProveedorGetAsync"+id.ToString(), entry =>
              {
                  entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                  entry.Priority = CacheItemPriority.Normal;
-                 return _clientMsSala.SalaGetAsync(id);
+                 return _clientMsSala.SalaProveedorGetAsync(id);
              });
 
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
 
-        [HttpPost("SalaSave")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaDto>))]
+        [HttpPost("SalaProveedorSave")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaDto>>> SalaSave(SalaDto input)
+        public async Task<ActionResult<IEnumerable<SalaProveedorDto>>> SalaProveedorSave(SalaProveedorDto input)
         {
             try
             {
                 if (input == null) return BadRequest(input);
-                var entidad = await _clientMsSala.SalaSaveAsync(input);
+                var entidad = await _clientMsSala.SalaProveedorSaveAsync(input);
                 if (entidad == null) return NotFound();
                 return Ok(entidad);
             }
@@ -82,27 +82,29 @@ namespace apiSupplier.Controllers
                 throw new Exception (ex.Message);
             }
         }
-        [HttpPost("SalaInsert")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaDto>))]
+
+
+        [HttpPost("SalaProveedorInsert")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaDto>>> SalaInsert(SalaDto input)
+        public async Task<ActionResult<IEnumerable<SalaProveedorDto>>> SalaProveedorInsert(SalaProveedorDto input)
         {
             if (input == null) return BadRequest(input);
-            var entidad = await _clientMsSala.SalaInsertAsync(input);
+            var entidad = await _clientMsSala.SalaProveedorInsertAsync(input);
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }
-        [HttpPut("SalaUpdate")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaDto>))]
+        [HttpPut("SalaProveedorUpdate")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalaProveedorDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
-        public async Task<ActionResult<IEnumerable<SalaDto>>> SalaUpdate(SalaDto input)
+        public async Task<ActionResult<IEnumerable<SalaProveedorDto>>> SalaProveedorUpdate(SalaProveedorDto input)
         {
             if (input == null) return BadRequest(input);
-            var entidad = await _clientMsSala.SalaUpdateAsync(input);
+            var entidad = await _clientMsSala.SalaProveedorUpdateAsync(input);
             if (entidad == null) return NotFound();
             return Ok(entidad);
         }

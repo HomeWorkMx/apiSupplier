@@ -15,7 +15,7 @@ namespace apiSupplier.Entities
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.5.0 (NJsonSchema v10.0.22.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class msTipoClient 
     {
-        private string _baseUrl = "https://micro-dev.bmlabs.cl/mstipo";
+        private string _baseUrl = "https://micro-prod.bmlabs.cl/mstipo";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
     
@@ -28,6 +28,7 @@ namespace apiSupplier.Entities
                 UpdateJsonSerializerSettings(settings);
                 return settings;
             });
+            BaseUrl = httpClient?.BaseAddress?.ToString();
         }
     
         public string BaseUrl 
@@ -9536,7 +9537,7 @@ namespace apiSupplier.Entities
     
     
     }
-    
+            
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SolicitudTipoDto 
     {
@@ -9798,11 +9799,11 @@ namespace apiSupplier.Entities
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class TipoServicioDisponibleDto 
     {
-        [Newtonsoft.Json.JsonProperty("idServicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdServicio { get; set; }
+        [Newtonsoft.Json.JsonProperty("idServicioDisponible", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdServicioDisponible { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("nombreServicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string NombreServicio { get; set; }
+        [Newtonsoft.Json.JsonProperty("nombreServicioDisponible", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string NombreServicioDisponible { get; set; }
     
         [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Descripcion { get; set; }
@@ -9905,6 +9906,8 @@ namespace apiSupplier.Entities
     
     
     }
+
+
 
 }
 
