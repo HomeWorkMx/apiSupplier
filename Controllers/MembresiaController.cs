@@ -31,14 +31,14 @@ namespace apiSupplier.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
         public async Task<ActionResult<IEnumerable<MembresiaDto>>> MembresiaGetAll()
         {
-            var entidades = await
-                _memoryCache.GetOrCreateAsync("MembresiaGetAllAsync", entry =>
+            var entidades = await _clientMsMembresia.MembresiaGetAllAsync();
+            /*_memoryCache.GetOrCreateAsync("MembresiaGetAllAsync", entry =>
                 {
                     entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                     entry.Priority = CacheItemPriority.Normal;
                     var membresias = _clientMsMembresia.MembresiaGetAllAsync();
                     return _clientMsMembresia.MembresiaGetAllAsync();
-                });
+                });*/
             if (entidades == null) return NotFound();
 
             return Ok(entidades);
@@ -52,15 +52,15 @@ namespace apiSupplier.Controllers
         public async Task<ActionResult<IEnumerable<MembresiaDto>>> MembresiaGet(int id)
         {
             if (id <= 0) return BadRequest(ModelState);
-            //var entidad = await _clientMsMembresia.MembresiaGetAsync(id);
+            var entidad = await _clientMsMembresia.MembresiaGetAsync(id);
 
-            var entidad = await
+           /* var entidad = await
                _memoryCache.GetOrCreateAsync("MembresiaGetAsync" + id.ToString(), entry =>
                  {
                      entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                      entry.Priority = CacheItemPriority.Normal;
                      return _clientMsMembresia.MembresiaGetAsync(id);
-                 });
+                 });*/
 
             if (entidad == null) return NotFound();
             return Ok(entidad);

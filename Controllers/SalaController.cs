@@ -30,14 +30,14 @@ namespace apiSupplier.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
         public async Task<ActionResult<IEnumerable<SalaDto>>> SalaGetAll()
         {
-            //var entidades = await _clientMsSala.SalaGetAllAsync();
-            var entidades = await
-               _memoryCache.GetOrCreateAsync("SalaGetAllAsync", entry =>
+            var entidades = await _clientMsSala.SalaGetAllAsync();
+            /*var entidades = await
+                _memoryCache.GetOrCreateAsync("SalaGetAllAsync", entry =>
                {
                    entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                    entry.Priority = CacheItemPriority.Normal;
                    return _clientMsSala.SalaGetAllAsync(); 
-               });
+               });*/
             if (entidades == null) return NotFound();
             return Ok(entidades);
         }
@@ -50,14 +50,14 @@ namespace apiSupplier.Controllers
         public async Task<ActionResult<IEnumerable<SalaDto>>> SalaGet(int id)
         {
             if (id <= 0) return BadRequest(ModelState);
-            //var entidad = await _clientMsSala.SalaGetAsync(id);
-            var entidad = await
+            var entidad = await _clientMsSala.SalaGetAsync(id);
+           /* var entidad = await
              _memoryCache.GetOrCreateAsync("SalaGetAsync"+id.ToString(), entry =>
              {
                  entry.AbsoluteExpiration = DateTime.Now.AddMinutes(5);
                  entry.Priority = CacheItemPriority.Normal;
                  return _clientMsSala.SalaGetAsync(id);
-             });
+             });*/
 
             if (entidad == null) return NotFound();
             return Ok(entidad);
