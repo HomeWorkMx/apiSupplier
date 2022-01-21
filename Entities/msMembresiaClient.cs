@@ -8417,7 +8417,7 @@ namespace apiSupplier.Entities
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class MembresiaServicioDisponibleDto 
     {
-        [Newtonsoft.Json.JsonProperty("idMembresiaServicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("IdMembresiaServicioDisponible", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdMembresiaServicio { get; set; }
     
         [Newtonsoft.Json.JsonProperty("idMembresia", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
