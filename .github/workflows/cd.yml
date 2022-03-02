@@ -29,9 +29,9 @@ jobs:
       - name: Push imagen registry
         uses: azure/docker-login@v1
         with:
-          login-server: goopen.azurecr.io
-          username: goopen
+          login-server: registry.digitalocean.com
+          username: e0259e347e0942509983dffb61cc619d33d1224a40116f0208e81687d306b9cf
           password: ${{ secrets.REGISTRY_SECRET }}
       - run: |
-          docker build . -t goopen.azurecr.io/apiSupplier:dev-lastest
-          docker push goopen.azurecr.io/apiSupplier:dev-lastest
+          docker build . -t registry.digitalocean.com/bmlabs/apiSupplier:dev-lastest
+          docker push registry.digitalocean.com/bmlabs/apiSupplier:dev-lastest
