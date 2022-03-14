@@ -5,6 +5,14 @@
     <UserSecretsId>478b9286-5f61-4f0a-a035-12dff02ecebc</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
 	<ItemGroup>
     <None Include=".github\workflows\cd.yml" />
   </ItemGroup>  

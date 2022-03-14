@@ -1,9 +1,9 @@
 name: Build MicroNetCore
 on:
   push:
-    branches: [master]
+    branches: [develop]
   pull_request:
-    branches: [master]
+    branches: [develop]
 
 jobs:
   build:
@@ -29,9 +29,9 @@ jobs:
       - name: Push imagen registry
         uses: azure/docker-login@v1
         with:
-          login-server: goopen.azurecr.io
-          username: goopen
+          login-server: registry.digitalocean.com
+          username: e0259e347e0942509983dffb61cc619d33d1224a40116f0208e81687d306b9cf
           password: ${{ secrets.REGISTRY_SECRET }}
       - run: |
-            docker build . -t goopen.azurecr.io/apisupplier:prod-${{ github.run_number }}
-            docker push goopen.azurecr.io/apisupplier:prod-${{ github.run_number }}
+          docker build . -t registry.digitalocean.com/bmlabs/apisupplier:dev-lastest
+          docker push registry.digitalocean.com/bmlabs/apisupplier:dev-lastest

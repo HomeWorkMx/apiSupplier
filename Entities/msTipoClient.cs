@@ -15,7 +15,7 @@ namespace apiSupplier.Entities
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.5.0 (NJsonSchema v10.0.22.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class msTipoClient 
     {
-        private string _baseUrl = "https://micro-prod.bmlabs.cl/mstipo";
+        private string _baseUrl = "https://micro-dev.bmlabs.cl/mstipo";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
     
