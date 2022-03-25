@@ -9862,53 +9862,53 @@ namespace apiSupplier.Entities
     
     //}
     
-    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    //public partial class UsuarioDto 
-    //{
-    //    [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public int? IdUsuario { get; set; }
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    public partial class UsuarioDto 
+    {
+        [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdUsuario { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("nombreUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string NombreUsuario { get; set; }
+        [Newtonsoft.Json.JsonProperty("nombreUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string NombreUsuario { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("correo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string Correo { get; set; }
+        [Newtonsoft.Json.JsonProperty("correo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Correo { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("contrasena", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string Contrasena { get; set; }
+        [Newtonsoft.Json.JsonProperty("contrasena", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Contrasena { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("telefono", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string Telefono { get; set; }
+        [Newtonsoft.Json.JsonProperty("telefono", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Telefono { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("direccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string Direccion { get; set; }
+        [Newtonsoft.Json.JsonProperty("direccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Direccion { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("idTipoUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public int? IdTipoUsuario { get; set; }
+        [Newtonsoft.Json.JsonProperty("idTipoUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdTipoUsuario { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("razonSocial", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string RazonSocial { get; set; }
+        [Newtonsoft.Json.JsonProperty("razonSocial", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string RazonSocial { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("datosFiscales", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string DatosFiscales { get; set; }
+        [Newtonsoft.Json.JsonProperty("datosFiscales", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DatosFiscales { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("paginaWeb", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string PaginaWeb { get; set; }
+        [Newtonsoft.Json.JsonProperty("paginaWeb", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string PaginaWeb { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string Descripcion { get; set; }
+        [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Descripcion { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("fechaIngreso", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string FechaIngreso { get; set; }
+        [Newtonsoft.Json.JsonProperty("fechaIngreso", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string FechaIngreso { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public int? BorradoLogico { get; set; }
+        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BorradoLogico { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("idTipoUsuarioNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public TipoUsuarioDto IdTipoUsuarioNavigation { get; set; }
+        [Newtonsoft.Json.JsonProperty("idTipoUsuarioNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public TipoUsuarioDto IdTipoUsuarioNavigation { get; set; }
     
     
-    //}
+    }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaProveedorDto 
@@ -9961,8 +9961,8 @@ namespace apiSupplier.Entities
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaServicioDisponibleDto 
     {
-        [Newtonsoft.Json.JsonProperty("idSalaServicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSalaServicio { get; set; }
+        [Newtonsoft.Json.JsonProperty("idSalaServicioDisponible", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdSalaServicioDisponible { get; set; }
     
         [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdSala { get; set; }
@@ -10015,47 +10015,47 @@ namespace apiSupplier.Entities
     
     }
     
-    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    //public partial class DireccionDto 
-    //{
-    //    [Newtonsoft.Json.JsonProperty("idDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public long? IdDireccion { get; set; }
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    public partial class DireccionDto 
+    {
+        [Newtonsoft.Json.JsonProperty("idDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? IdDireccion { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("idProveedor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public int? IdProveedor { get; set; }
+        [Newtonsoft.Json.JsonProperty("idProveedor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? IdProveedor { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("nombreCalle", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string NombreCalle { get; set; }
+        [Newtonsoft.Json.JsonProperty("nombreCalle", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string NombreCalle { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("numeroMunicipal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public int? NumeroMunicipal { get; set; }
+        [Newtonsoft.Json.JsonProperty("numeroMunicipal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? NumeroMunicipal { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string DivisionGeopoliticaNvl1 { get; set; }
+        [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DivisionGeopoliticaNvl1 { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string DivisionGeopoliticaNvl2 { get; set; }
+        [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DivisionGeopoliticaNvl2 { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string DivisionGeopoliticaNvl3 { get; set; }
+        [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DivisionGeopoliticaNvl3 { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("coorX", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public double? CoorX { get; set; }
+        [Newtonsoft.Json.JsonProperty("coorX", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? CoorX { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("coorY", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public double? CoorY { get; set; }
+        [Newtonsoft.Json.JsonProperty("coorY", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? CoorY { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public string Descripcion { get; set; }
+        [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Descripcion { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public int? BorradoLogico { get; set; }
+        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BorradoLogico { get; set; }
     
-    //    [Newtonsoft.Json.JsonProperty("idProveedorNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public UsuarioDto IdProveedorNavigation { get; set; }
+        [Newtonsoft.Json.JsonProperty("idProveedorNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public UsuarioDto IdProveedorNavigation { get; set; }
     
     
-    //}
+    }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaDireccionDto 
@@ -10168,14 +10168,14 @@ namespace apiSupplier.Entities
     
     }
     
-    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    //public partial class NotFoundResult 
-    //{
-    //    [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    //    public int? StatusCode { get; set; }
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    public partial class NotFoundResult 
+    {
+        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? StatusCode { get; set; }
     
     
-    //}
+    }
     
     //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     //public partial class ProblemDetails 

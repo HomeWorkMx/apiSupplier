@@ -35,5 +35,5 @@
 
   <ItemGroup>
     <Folder Include="openapi\" />
-  </ItemGroup>	
+  </ItemGroup>
 </Project>
