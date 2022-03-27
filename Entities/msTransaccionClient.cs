@@ -3403,58 +3403,58 @@ namespace apiSupplier.Entities
     
     
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class TransaccionDto 
+    public partial class TransaccionDto
     {
         [Newtonsoft.Json.JsonProperty("idTransacciones", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long? IdTransacciones { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("idUsuarioCliente", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdUsuarioCliente { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("idUsuarioProveedor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdUsuarioProveedor { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("monto", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? Monto { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("descuento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? Descuento { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("totalPago", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? TotalPago { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("fecha", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTimeOffset? Fecha { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BorradoLogico { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("idTipoEstadoTransaccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdTipoEstadoTransaccion { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("idTipoEstadoTransaccionNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public TipoEstadoTransaccionDto IdTipoEstadoTransaccionNavigation { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("idUsuarioClienteNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public UsuarioDto IdUsuarioClienteNavigation { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("idUsuarioProveedorNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public UsuarioDto IdUsuarioProveedorNavigation { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("calificacion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<CalificacionDto> Calificacion { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("tipoPagoTransaccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<TipoPagoTransaccionDto> TipoPagoTransaccion { get; set; }
-    
+
         [Newtonsoft.Json.JsonProperty("transaccionProductos", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<TransaccionProductosDto> TransaccionProductos { get; set; }
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class TransaccionDto2 
     {

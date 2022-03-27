@@ -134,6 +134,26 @@ namespace apiSupplier.Controllers
             return Ok(entidad);
         }
 
+        [HttpGet("SalaForDireccionGetByIdProveedor")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DireccionDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFoundResult))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        public async Task<ActionResult<IEnumerable<DireccionDto>>> SalaForDireccionGetByIdProveedor(int idProveedor)
+        {
+            try
+            {
+                var direcicones = await _clientMsSala.SalaForDireccionGetByIdProveedorAsync(idProveedor);
+                if (direcicones == null) return NotFound();
+                return Ok(direcicones);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
 
     }
 }

@@ -28,7 +28,6 @@ namespace apiSupplier.Entities
                 UpdateJsonSerializerSettings(settings);
                 return settings;
             });
-            BaseUrl = httpClient?.BaseAddress?.ToString();
         }
     
         public string BaseUrl 
@@ -1592,6 +1591,90 @@ namespace apiSupplier.Entities
                         }
             
                         return default(System.Collections.Generic.ICollection<SalaDireccionDto>);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<DireccionDto>> SalaForDireccionGetByIdProveedorAsync(int? idProveedor)
+        {
+            return SalaForDireccionGetByIdProveedorAsync(idProveedor, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<DireccionDto>> SalaForDireccionGetByIdProveedorAsync(int? idProveedor, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/SalaDireccion/SalaForDireccionGetByIdProveedor?");
+            if (idProveedor != null) 
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("idProveedor") + "=").Append(System.Uri.EscapeDataString(ConvertToString(idProveedor, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<DireccionDto>>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == "404") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<NotFoundResult>(response_, headers_).ConfigureAwait(false);
+                            throw new ApiException<NotFoundResult>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == "500") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_).ConfigureAwait(false);
+                            throw new ApiException<ProblemDetails>("Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+            
+                        return default(System.Collections.Generic.ICollection<DireccionDto>);
                     }
                     finally
                     {
@@ -9862,74 +9945,74 @@ namespace apiSupplier.Entities
     
     //}
     
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class UsuarioDto 
-    {
-        [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdUsuario { get; set; }
+    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    //public partial class UsuarioDto 
+    //{
+    //    [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdUsuario { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("nombreUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string NombreUsuario { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("nombreUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string NombreUsuario { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("correo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Correo { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("correo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string Correo { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("contrasena", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Contrasena { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("contrasena", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string Contrasena { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("telefono", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Telefono { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("telefono", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string Telefono { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("direccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Direccion { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("direccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string Direccion { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idTipoUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdTipoUsuario { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("idTipoUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdTipoUsuario { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("razonSocial", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string RazonSocial { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("razonSocial", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string RazonSocial { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("datosFiscales", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DatosFiscales { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("datosFiscales", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string DatosFiscales { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("paginaWeb", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PaginaWeb { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("paginaWeb", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string PaginaWeb { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Descripcion { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string Descripcion { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("fechaIngreso", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FechaIngreso { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("fechaIngreso", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string FechaIngreso { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? BorradoLogico { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? BorradoLogico { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idTipoUsuarioNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public TipoUsuarioDto IdTipoUsuarioNavigation { get; set; }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class SalaProveedorDto 
-    {
-        [Newtonsoft.Json.JsonProperty("idSalaUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSalaUsuario { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSala { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdUsuario { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? BorradoLogico { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("idUsuarioNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public UsuarioDto IdUsuarioNavigation { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("idTipoUsuarioNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public TipoUsuarioDto IdTipoUsuarioNavigation { get; set; }
     
     
-    }
+    //}
+    
+    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    //public partial class SalaProveedorDto 
+    //{
+    //    [Newtonsoft.Json.JsonProperty("idSalaUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdSalaUsuario { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdSala { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdUsuario { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? BorradoLogico { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("idUsuarioNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public UsuarioDto IdUsuarioNavigation { get; set; }
+    
+    
+    //}
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaServicioAdicionalDto 
@@ -9982,80 +10065,80 @@ namespace apiSupplier.Entities
     
     }
     
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class SalaUsuarioDto 
-    {
-        [Newtonsoft.Json.JsonProperty("idSalaUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSalaUsuario { get; set; }
+    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    //public partial class SalaUsuarioDto 
+    //{
+    //    [Newtonsoft.Json.JsonProperty("idSalaUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdSalaUsuario { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSala { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("idSala", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdSala { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdUsuario { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("idUsuario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdUsuario { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idTransaccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdTransaccion { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("idTransaccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdTransaccion { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idSalaDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdSalaDireccion { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("idSalaDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdSalaDireccion { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("idMembresia", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdMembresia { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("idMembresia", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdMembresia { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("fechaHoraInicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FechaHoraInicio { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("fechaHoraInicio", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string FechaHoraInicio { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("fechaHoraCorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FechaHoraCorte { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("fechaHoraCorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string FechaHoraCorte { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? BorradoLogico { get; set; }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class DireccionDto 
-    {
-        [Newtonsoft.Json.JsonProperty("idDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? IdDireccion { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("idProveedor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdProveedor { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("nombreCalle", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string NombreCalle { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("numeroMunicipal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NumeroMunicipal { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DivisionGeopoliticaNvl1 { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DivisionGeopoliticaNvl2 { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DivisionGeopoliticaNvl3 { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("coorX", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double? CoorX { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("coorY", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double? CoorY { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Descripcion { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? BorradoLogico { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("idProveedorNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public UsuarioDto IdProveedorNavigation { get; set; }
+    //    [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? BorradoLogico { get; set; }
     
     
-    }
+    //}
+    
+    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    //public partial class DireccionDto 
+    //{
+    //    [Newtonsoft.Json.JsonProperty("idDireccion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public long? IdDireccion { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("idProveedor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? IdProveedor { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("nombreCalle", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string NombreCalle { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("numeroMunicipal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? NumeroMunicipal { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string DivisionGeopoliticaNvl1 { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string DivisionGeopoliticaNvl2 { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("divisionGeopoliticaNvl3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string DivisionGeopoliticaNvl3 { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("coorX", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public double? CoorX { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("coorY", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public double? CoorY { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("descripcion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public string Descripcion { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("borradoLogico", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? BorradoLogico { get; set; }
+    
+    //    [Newtonsoft.Json.JsonProperty("idProveedorNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public UsuarioDto IdProveedorNavigation { get; set; }
+    
+    
+    //}
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SalaDireccionDto 
@@ -10168,14 +10251,14 @@ namespace apiSupplier.Entities
     
     }
     
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class NotFoundResult 
-    {
-        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? StatusCode { get; set; }
+    //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
+    //public partial class NotFoundResult 
+    //{
+    //    [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    //    public int? StatusCode { get; set; }
     
     
-    }
+    //}
     
     //[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
     //public partial class ProblemDetails 
